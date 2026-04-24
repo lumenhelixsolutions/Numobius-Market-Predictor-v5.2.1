@@ -1,130 +1,29 @@
-// metrics.js
-// Utility functions for computing performance metrics during backtests.
-// These functions operate on arrays of primitive values (e.g. prices, returns, signals)
-// and return simple statistics such as win rate, profit factor and drawdown.
-
-// Calculate simple returns from an array of prices.  The return is defined as the
-// difference between the current price and the next price (i.e. price[i+1] - price[i]).
-// The length of the returned array will be one less than the length of the input prices.
-export function calculateReturns(prices) {
-  const returns = [];
-  for (let i = 0; i < prices.length - 1; i++) {
-    returns.push(prices[i + 1] - prices[i]);
-  }
-  return returns;
-}
-
-// Compute the win rate of a set of trading signals.  A BUY signal is considered a
-// success when the subsequent return is positive, a SELL signal succeeds when
-// the return is negative, and WAIT signals are ignored.  Returns is an array of
-// numeric values corresponding to the price change following each signal.
-export function computeWinRate(signals, returns) {
-  let wins = 0;
-  let total = 0;
-  for (let i = 0; i < signals.length; i++) {
-    const sig = signals[i];
-    const r = returns[i];
-    if (sig === 'BUY') {
-      total++;
-      if (r > 0) wins++;
-    } else if (sig === 'SELL') {
-      total++;
-      if (r < 0) wins++;
-    }
-  }
-  return total === 0 ? 0 : wins / total;
-}
-
-// Compute the profit factor of a series of trades.  Profit factor is defined as
-// total gross profit divided by total gross loss.  A profit factor greater than
-// one indicates that profitable trades outweigh losing trades.  Signals that are
-// WAIT are ignored.
-export function computeProfitFactor(signals, returns) {
-  let grossProfit = 0;
-  let grossLoss = 0;
-  for (let i = 0; i < signals.length; i++) {
-    const sig = signals[i];
-    const r = returns[i];
-    if (sig === 'BUY') {
-      if (r > 0) grossProfit += r;
-      else grossLoss -= r;
-    } else if (sig === 'SELL') {
-      if (r < 0) grossProfit += -r;
-      else grossLoss += r;
-    }
-  }
-  return grossLoss === 0 ? Infinity : grossProfit / grossLoss;
-}
-
-// Compute the equity curve given an initial balance and arrays of signals and returns.
-// Each BUY/SELL signal trades a single unit at the current price difference.  WAIT
-// signals leave the balance unchanged.  Returns a new array representing the
-// running balance after each trade.
-export function computeEquityCurve(initialBalance, signals, returns) {
-  const equity = [initialBalance];
-  let balance = initialBalance;
-  for (let i = 0; i < signals.length; i++) {
-    const sig = signals[i];
-    const r = returns[i];
-    if (sig === 'BUY') {
-      balance += r;
-    } else if (sig === 'SELL') {
-      balance -= r;
-    }
-    equity.push(balance);
-  }
-  return equity;
-}
-
-// Compute the maximum drawdown of an equity curve.  Drawdown is the decline from
-// a peak to a trough.  The maximum drawdown is the largest such decline expressed
-// as a positive number.  The equity curve should be an array of balances.
-export function computeMaxDrawdown(equity) {
-  let peak = equity[0];
-  let maxDrawdown = 0;
-  for (let i = 1; i < equity.length; i++) {
-    const value = equity[i];
-    if (value > peak) {
-      peak = value;
-    }
-    const drawdown = peak - value;
-    if (drawdown > maxDrawdown) {
-      maxDrawdown = drawdown;
-    }
-  }
-  return maxDrawdown;
-}
-
-// Compute the Sharpe ratio of a series of returns.  The Sharpe ratio is defined as
-// the mean return minus the risk‐free rate divided by the standard deviation of
-// returns.  The riskFree parameter defaults to 0.  The function returns 0 when
-// the standard deviation is zero to avoid division by zero.
-export function computeSharpeRatio(returns, riskFree = 0) {
-  if (returns.length === 0) return 0;
-  const mean = returns.reduce((a, b) => a + b, 0) / returns.length;
-  const excess = returns.map(r => r - riskFree);
-  const meanExcess = excess.reduce((a, b) => a + b, 0) / returns.length;
-  const variance = excess.reduce((sum, r) => sum + Math.pow(r - meanExcess, 2), 0) / returns.length;
-  const stdDev = Math.sqrt(variance);
-  return stdDev === 0 ? 0 : meanExcess / stdDev;
-}
-
-// Compute the false signal rate.  This metric counts the proportion of BUY/SELL
-// signals that resulted in a loss.  WAIT signals are ignored.  A lower value
-// indicates that fewer signals were incorrect.
-export function computeFalseSignalRate(signals, returns) {
-  let falseCount = 0;
-  let total = 0;
-  for (let i = 0; i < signals.length; i++) {
-    const sig = signals[i];
-    const r = returns[i];
-    if (sig === 'BUY') {
-      total++;
-      if (r <= 0) falseCount++;
-    } else if (sig === 'SELL') {
-      total++;
-      if (r >= 0) falseCount++;
-    }
-  }
-  return total === 0 ? 0 : falseCount / total;
-}
+Numöbius Market Predictor — Command Center v5.2.1
+This repository packages the Numöbius 64D Command Center (version 5.2.1) along with its supporting research and documentation.  The Command Center is the front‑end of the Numöbius Market Predictor, a multi‑layer dynamical system that combines quaternion algebra, coupled observers, multi‑radix decomposition and a cyclic timing engine to generate probabilistic trade signals.  All state transitions are logged via an explicit audit packet format, making the engine reversible and fully auditable.
+Repository structure
+```
+numobius_v5_2_1_repo/
+├── command_center.html                # Browser UI for the predictor
+├── README.md                          # This overview document
+├── docs/
+│   ├── Pasted_text.txt                # Original research summary provided by the user
+│   ├── technical_summary_v5.2.1.md    # Integrated technical summary and research (v5.2.1)
+│   └── validation_report.md           # Guide to backtesting and ablation engine
+├── src/
+│   └── js/
+│       └── backtest/                  # Backtesting and ablation library
+│           ├── engine.js              # Core backtest orchestration
+│           ├── metrics.js             # Performance metric computations
+│           └── ablation.js            # Sample decision layers and ablation harness
+```
+command_center.html
+The `command_center.html` file implements the Numöbius dashboard using HTML, CSS and vanilla JavaScript.  It renders the KPI strip, charts via Plotly.js, scheduler controls, and logging/alert systems.  The interface exposes the key indicators computed by the predictor and allows an operator to monitor and orchestrate trading signals in real time.
+docs/Pasted_text.txt
+This file contains the original technical notes and code snippets provided by the user.  It outlines the architecture, algorithms and performance figures for an earlier version of the system.
+docs/technical_summary_v5.2.1.md
+An updated and unified technical summary for version 5.2.1.  It details the three‑layer architecture, the formal novelty claim, the audit packet definition, core algorithms, forcing equations, signal generation logic, risk management and performance statistics.  Additional sections explain how the Command Center fetches and processes data (including the non‑orientable ladder and k‑probe harness) and summarise reported accuracy claims from other trading systems.  The document concludes with innovations, limitations, future directions and a bottom‑line overview.
+Getting started
+Open `command_center.html` in a modern web browser (e.g. Chrome or Firefox).  The dashboard will display a series of KPIs (energy, convergence, forcing, clock phase, regime, accuracy), live tick data and controls for signal orchestration (BUY/SELL/WAIT).  While this repository only contains the front‑end, the included documentation explains how the predictor’s backend algorithms operate and how to integrate them with a Python engine.
+Documentation
+Refer to `docs/technical_summary_v5.2.1.md` for a full description of the system.  It explains the three‑layer stack (presentation, analysis and algebraic core), defines the audit packet format `(U_t, C_t, V_t, M_t, μ⃗_t)`, derives the forcing equation used by the CNLT observer, describes the multi‑radix analyser and 840‑clock, and provides empirical performance statistics.  The document also lists key innovations, limitations, and suggested future work.
+If you wish to evaluate the predictive value of the system’s layers or test new ideas, consult `docs/validation_report.md`.  It introduces a lightweight backtesting and ablation framework located in `src/js/backtest/` and demonstrates how to run deterministic experiments that measure win rate, profit factor, drawdown and other metrics for each decision layer.
