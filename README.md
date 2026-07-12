@@ -1,29 +1,131 @@
-Numöbius Market Predictor — Command Center v5.2.1
-This repository packages the Numöbius 64D Command Center (version 5.2.1) along with its supporting research and documentation.  The Command Center is the front‑end of the Numöbius Market Predictor, a multi‑layer dynamical system that combines quaternion algebra, coupled observers, multi‑radix decomposition and a cyclic timing engine to generate probabilistic trade signals.  All state transitions are logged via an explicit audit packet format, making the engine reversible and fully auditable.
-Repository structure
+# Numobius-Market-Predictor-v5.2.1
+
+<p align="center">
+  <a href="https://lumenhelix.com">
+    <img src="docs/assets/lumenhelix-logo.svg" alt="LumenHelix Solutions" width="180">
+  </a>
+</p>
+
+<h3 align="center">Browser command center for the Numobius probabilistic market predictor</h3>
+
+<p align="center">
+  <a href="https://lumenhelixsolutions.github.io/Numobius-Market-Predictor-v5.2.1/">
+    <img src="https://img.shields.io/badge/Launch_Page-Numobius-Market-Predictor-v5.2.1-00D4FF?style=flat-square&logo=githubpages&logoColor=white" alt="Launch Page">
+  </a>
+  <a href="https://lumenhelix.com">
+    <img src="https://img.shields.io/badge/Built_by-LumenHelix-7C3AED?style=flat-square" alt="Built by LumenHelix">
+  </a>
+  <img src="https://img.shields.io/badge/license-CC0-1.0-8A95A8?style=flat-square" alt="License">
+</p>
+
+---
+
+**Numobius-Market-Predictor-v5.2.1** is part of the [LumenHelix Solutions](https://lumenhelix.com) portfolio — applied symbolic dynamics & reversible computation for deterministic, traceable AI systems.
+
+Numobius-Market-Predictor-v5.2.1 is the LumenHelix command center for the Numobius 64D market predictor. The front-end dashboard combines quaternion algebra, coupled observers, multi-radix decomposition, and a cyclic timing engine into a reversible, auditable signal interface.
+
+## Why this exists
+
+- **Trace every decision.** Explicit audit packets make the engine reversible and fully auditable.
+- **Test before trusting.** Built-in backtesting and ablation harness measure win rate, profit factor, and drawdown per layer.
+- **Run locally.** No build pipeline or external API required — your data never leaves the browser session.
+
+## Quick start
+
+Install and run Numobius-Market-Predictor-v5.2.1 in under two minutes.
+
+### macOS / Linux
+
+```bash
+# Clone
+git clone https://github.com/lumenhelixsolutions/Numobius-Market-Predictor-v5.2.1.git
+cd Numobius-Market-Predictor-v5.2.1
+
+# Install & run
+git clone https://github.com/lumenhelixsolutions/Numobius-Market-Predictor-v5.2.1.git
+cd Numobius-Market-Predictor-v5.2.1
+python3 -m http.server 8000
 ```
-numobius_v5_2_1_repo/
-├── command_center.html                # Browser UI for the predictor
-├── README.md                          # This overview document
-├── docs/
-│   ├── Pasted_text.txt                # Original research summary provided by the user
-│   ├── technical_summary_v5.2.1.md    # Integrated technical summary and research (v5.2.1)
-│   └── validation_report.md           # Guide to backtesting and ablation engine
-├── src/
-│   └── js/
-│       └── backtest/                  # Backtesting and ablation library
-│           ├── engine.js              # Core backtest orchestration
-│           ├── metrics.js             # Performance metric computations
-│           └── ablation.js            # Sample decision layers and ablation harness
+
+### Windows (PowerShell)
+
+```powershell
+# Clone
+git clone https://github.com/lumenhelixsolutions/Numobius-Market-Predictor-v5.2.1.git
+Set-Location Numobius-Market-Predictor-v5.2.1
+
+# Install & run
+git clone https://github.com/lumenhelixsolutions/Numobius-Market-Predictor-v5.2.1.git
+Set-Location Numobius-Market-Predictor-v5.2.1
+python -m http.server 8000
 ```
-command_center.html
-The `command_center.html` file implements the Numöbius dashboard using HTML, CSS and vanilla JavaScript.  It renders the KPI strip, charts via Plotly.js, scheduler controls, and logging/alert systems.  The interface exposes the key indicators computed by the predictor and allows an operator to monitor and orchestrate trading signals in real time.
-docs/Pasted_text.txt
-This file contains the original technical notes and code snippets provided by the user.  It outlines the architecture, algorithms and performance figures for an earlier version of the system.
-docs/technical_summary_v5.2.1.md
-An updated and unified technical summary for version 5.2.1.  It details the three‑layer architecture, the formal novelty claim, the audit packet definition, core algorithms, forcing equations, signal generation logic, risk management and performance statistics.  Additional sections explain how the Command Center fetches and processes data (including the non‑orientable ladder and k‑probe harness) and summarise reported accuracy claims from other trading systems.  The document concludes with innovations, limitations, future directions and a bottom‑line overview.
-Getting started
-Open `command_center.html` in a modern web browser (e.g. Chrome or Firefox).  The dashboard will display a series of KPIs (energy, convergence, forcing, clock phase, regime, accuracy), live tick data and controls for signal orchestration (BUY/SELL/WAIT).  While this repository only contains the front‑end, the included documentation explains how the predictor’s backend algorithms operate and how to integrate them with a Python engine.
-Documentation
-Refer to `docs/technical_summary_v5.2.1.md` for a full description of the system.  It explains the three‑layer stack (presentation, analysis and algebraic core), defines the audit packet format `(U_t, C_t, V_t, M_t, μ⃗_t)`, derives the forcing equation used by the CNLT observer, describes the multi‑radix analyser and 840‑clock, and provides empirical performance statistics.  The document also lists key innovations, limitations, and suggested future work.
-If you wish to evaluate the predictive value of the system’s layers or test new ideas, consult `docs/validation_report.md`.  It introduces a lightweight backtesting and ablation framework located in `src/js/backtest/` and demonstrates how to run deterministic experiments that measure win rate, profit factor, drawdown and other metrics for each decision layer.
+
+### Windows (Git Bash / WSL)
+
+```bash
+git clone https://github.com/lumenhelixsolutions/Numobius-Market-Predictor-v5.2.1.git
+cd Numobius-Market-Predictor-v5.2.1
+git clone https://github.com/lumenhelixsolutions/Numobius-Market-Predictor-v5.2.1.git
+cd Numobius-Market-Predictor-v5.2.1
+python3 -m http.server 8000
+```
+
+> **Device note:** Numobius-Market-Predictor-v5.2.1 is tested on Windows 11, macOS Sonoma, Ubuntu 22.04/24.04, and modern mobile browsers.
+
+## Full documentation
+
+Visit the launch page for architecture, API reference, and deployment guides:  
+**https://lumenhelixsolutions.github.io/Numobius-Market-Predictor-v5.2.1/**
+
+## Features
+
+| Feature | What it gives you |
+|---------|-------------------|
+| Live command center | HTML/CSS/vanilla-JavaScript dashboard with KPI strip, Plotly charts, scheduler, and BUY/SELL/WAIT controls. |
+| Reversible audit packets | Every state transition is logged as (U_t, C_t, V_t, M_t, mu_t) for full traceability and rollback. |
+| Backtest engine | Deterministic engine.js, metrics.js, and ablation.js let you evaluate layers and decision policies. |
+| Zero build step | Open command_center.html in any modern browser — no bundler, server, or cloud dependency. |
+
+## Architecture at a glance
+
+```
+Numobius-Market-Predictor-v5.2.1/
+├── command_center.html       Browser UI and KPI dashboard
+├── engine.js                 Core prediction orchestration
+├── metrics.js                Performance metric computations
+├── ablation.js               Layer ablation harness
+└── docs/                     Technical summary and validation report
+```
+
+## Development
+
+```bash
+# Serve the dashboard locally
+python3 -m http.server 8000
+
+# Then open http://localhost:8000/command_center.html
+```
+
+## Roadmap
+
+- [ ] Python backend integration for live data feeds
+- [ ] Expanded ablation presets and regime detectors
+- [ ] Exportable trade-journal and audit reports
+
+## Support & consulting
+
+Need deterministic AI systems with full traceability? LumenHelix builds reversible computation kernels, governance layers, and end-to-end AI integrations.
+
+- **Website:** https://lumenhelix.com
+- **Services:** AI diagnostics, B.Y.O. support packages, governance audits
+- **Research:** TEN² kernel, R.U.B.I.C. boundary discipline, C.O.R.E. constraint lens
+
+## License
+
+Released under the CC0 1.0 Universal Public Domain Dedication.
+
+---
+
+<p align="center">
+  <sub>Engineered by <a href="https://lumenhelix.com">LumenHelix Solutions</a> — Applied Symbolic Dynamics & Reversible Computation.</sub>
+</p>
