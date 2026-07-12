@@ -1,7 +1,11 @@
 # Numobius-Market-Predictor-v5.2.1
 
 <p align="center">
-  <img src="docs/assets/logo.svg" alt="Numobius-Market-Predictor-v5.2.1 logo" width="160">
+  <img src="docs/assets/hero.svg" alt="Numobius-Market-Predictor-v5.2.1 header" width="100%">
+</p>
+
+<p align="center">
+  <img src="docs/assets/logo.svg" alt="Numobius-Market-Predictor-v5.2.1 logo" width="120">
 </p>
 
 <h3 align="center">Predict. Audit. Decide.</h3>
@@ -9,9 +13,9 @@
 <p align="center">Browser command center for the Numobius probabilistic market predictor.</p>
 
 <p align="center">
-  <a href="https://lumenhelixsolutions.github.io/Numobius-Market-Predictor-v5.2.1/">Launch Page</a>
+  <a href="https://lumenhelixlab.github.io/Numobius-Market-Predictor-v5.2.1/">Launch Page</a>
   <span> · </span>
-  <a href="https://github.com/lumenhelixsolutions/Numobius-Market-Predictor-v5.2.1">GitHub</a>
+  <a href="https://github.com/lumenhelixlab/Numobius-Market-Predictor-v5.2.1">GitHub</a>
   <span> · </span>
   <a href="https://lumenhelix.com">LumenHelix</a>
 </p>
@@ -31,7 +35,7 @@ Numobius-Market-Predictor-v5.2.1 is the command center for the Numobius 64D mark
 ### macOS / Linux
 
 ```bash
-git clone https://github.com/lumenhelixsolutions/Numobius-Market-Predictor-v5.2.1.git
+git clone https://github.com/lumenhelixlab/Numobius-Market-Predictor-v5.2.1.git
 cd Numobius-Market-Predictor-v5.2.1
 python3 -m http.server 8000
 ```
@@ -39,7 +43,7 @@ python3 -m http.server 8000
 ### Windows (PowerShell)
 
 ```powershell
-git clone https://github.com/lumenhelixsolutions/Numobius-Market-Predictor-v5.2.1.git
+git clone https://github.com/lumenhelixlab/Numobius-Market-Predictor-v5.2.1.git
 Set-Location Numobius-Market-Predictor-v5.2.1
 python -m http.server 8000
 ```
@@ -47,7 +51,7 @@ python -m http.server 8000
 ### Windows (Git Bash / WSL)
 
 ```bash
-git clone https://github.com/lumenhelixsolutions/Numobius-Market-Predictor-v5.2.1.git
+git clone https://github.com/lumenhelixlab/Numobius-Market-Predictor-v5.2.1.git
 cd Numobius-Market-Predictor-v5.2.1
 python3 -m http.server 8000
 ```
