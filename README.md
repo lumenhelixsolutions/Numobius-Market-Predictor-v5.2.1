@@ -33,8 +33,6 @@ Numobius-Market-Predictor-v5.2.1 is the command center for the Numobius 64D mark
 ```bash
 git clone https://github.com/lumenhelixsolutions/Numobius-Market-Predictor-v5.2.1.git
 cd Numobius-Market-Predictor-v5.2.1
-git clone https://github.com/lumenhelixsolutions/Numobius-Market-Predictor-v5.2.1.git
-cd Numobius-Market-Predictor-v5.2.1
 python3 -m http.server 8000
 ```
 
@@ -43,16 +41,12 @@ python3 -m http.server 8000
 ```powershell
 git clone https://github.com/lumenhelixsolutions/Numobius-Market-Predictor-v5.2.1.git
 Set-Location Numobius-Market-Predictor-v5.2.1
-git clone https://github.com/lumenhelixsolutions/Numobius-Market-Predictor-v5.2.1.git
-Set-Location Numobius-Market-Predictor-v5.2.1
 python -m http.server 8000
 ```
 
 ### Windows (Git Bash / WSL)
 
 ```bash
-git clone https://github.com/lumenhelixsolutions/Numobius-Market-Predictor-v5.2.1.git
-cd Numobius-Market-Predictor-v5.2.1
 git clone https://github.com/lumenhelixsolutions/Numobius-Market-Predictor-v5.2.1.git
 cd Numobius-Market-Predictor-v5.2.1
 python3 -m http.server 8000
