@@ -7,22 +7,22 @@ This document explains the proper way to access, use, and interpret the interfac
 
 ## File and Hosting
 - Primary application file: `command_center.html`
-- Repository: `lumenhelixsolutions/Numobius-Market-Predictor-v5.2.1`
+- Repository: `lumenhelixlab/Numobius-Market-Predictor-v5.2.1`
 - Default branch: `main`
 
 ### Recommended ways to view the app
 1. **GitHub Pages**
    - Best for full browser rendering.
    - Expected URL pattern:
-     - `https://lumenhelixsolutions.github.io/Numobius-Market-Predictor-v5.2.1/command_center.html`
+     - `https://lumenhelixlab.github.io/Numobius-Market-Predictor-v5.2.1/command_center.html`
 2. **CDN delivery**
    - Useful for direct rendering from repository content.
    - Example:
-     - `https://cdn.jsdelivr.net/gh/lumenhelixsolutions/Numobius-Market-Predictor-v5.2.1@main/command_center.html`
+     - `https://cdn.jsdelivr.net/gh/lumenhelixlab/Numobius-Market-Predictor-v5.2.1@main/command_center.html`
 3. **Raw file**
    - Best for source access, less reliable for fully hosted behavior.
    - Example:
-     - `https://raw.githubusercontent.com/lumenhelixsolutions/Numobius-Market-Predictor-v5.2.1/main/command_center.html`
+     - `https://raw.githubusercontent.com/lumenhelixlab/Numobius-Market-Predictor-v5.2.1/main/command_center.html`
 
 ## External Dependencies
 The application loads third-party browser libraries directly:
